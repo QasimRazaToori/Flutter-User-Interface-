@@ -1,0 +1,172 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(InstaUi());
+}
+
+class InstaUi extends StatelessWidget {
+  const InstaUi({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        body: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(height: 30),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  'Instagram UI',
+                  style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+                ),
+              ),
+              SizedBox(height: 25),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  'Stories',
+                  style: TextStyle(fontSize: 18),
+                ),
+              ),
+              SizedBox(
+                height: 80,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: [
+                    SizedBox(
+                      width: 25,
+                    ),
+                    _buildStory(
+                        'assets/clock-red-seconds-hand-area-time-remaining-illustration-d-49424810.webp'),
+                    SizedBox(
+                      width: 90,
+                    ),
+                    _buildStory(
+                        'assets/pngtree-wolfs-full-hd-wallpaper-art-wallpaper-1920x1080-1080p-image_2571308.jpg'),
+                    SizedBox(
+                      width: 90,
+                    ),
+                    _buildStory('assets/images.jpg'),
+                    SizedBox(
+                      width: 90,
+                    ),
+                    _buildStory('assets/Lesson_time.jpg'),
+                    SizedBox(
+                      width: 90,
+                    ),
+                    _buildStory('assets/Screenshot 2024-05-01 112534.png'),
+                    SizedBox(
+                      width: 90,
+                    ),
+                    _buildStory('assets/Lesson_time.jpg'),
+                    SizedBox(
+                      width: 90,
+                    ),
+                    _buildStory('assets/Lesson_time.jpg'),
+                    SizedBox(
+                      width: 90,
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(height: 25),
+              _buildPost(
+                  'assets/Screenshot 2024-05-01 112534.png',
+                  'Sharjeel Hussain Turi',
+                  'itx_qasim_toori',
+                  '12,544',
+                  '#Future #Artest'),
+              SizedBox(height: 25),
+              _buildPost('assets/images.jpg', 'Sharjeel Hussain Turi',
+                  'call_me_toori', '12,544', '#Future #Artest'),
+              SizedBox(height: 25),
+              _buildPost('assets/images.jpg', 'Sharjeel Hussain Turi',
+                  'itx_qasim_toori', '12,544', '#Future #Artest'),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildStory(String imagePath) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 10.0),
+      child: CircleAvatar(
+        radius: 30,
+        backgroundImage: AssetImage(imagePath),
+      ),
+    );
+  }
+
+  Widget _buildPost(String image, String username, String handle, String likes,
+      String hashtags) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Row(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(20),
+              child: CircleAvatar(
+                radius: 20,
+                backgroundImage: AssetImage(image),
+              ),
+            ),
+            Text(username),
+            Spacer(),
+            Icon(Icons.menu),
+          ],
+        ),
+        Container(
+          child: Image.asset(image),
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 8.0),
+          child: Row(
+            children: [
+              Icon(Icons.heart_broken_rounded),
+              SizedBox(width: 10),
+              Icon(Icons.circle_outlined),
+              SizedBox(width: 10),
+              Icon(Icons.send),
+              Spacer(),
+              Icon(Icons.save_outlined),
+            ],
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Row(
+            children: [
+              Text('$likes '),
+              Text(
+                'likes',
+                style: TextStyle(color: Colors.blue),
+              )
+            ],
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Row(
+            children: [
+              Text('$handle '),
+              SizedBox(width: 10),
+              Text(
+                hashtags,
+                style: TextStyle(color: Colors.blue),
+              )
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+}
+
